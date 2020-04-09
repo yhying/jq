@@ -39,7 +39,29 @@
             </ul>
         </div>
     </div>
-    <script src="js/jquery.min.js"></script>
+    <script>
+        $(function(){
+            var width=720;
+            var animateSpeed=1000;
+            var pause=3000;
+            var $slider=$('.slider')
+            var $sliders=$slider.find('.sliders')
+            var $slide=$sliders.find('.slide')
+            var currentIndex=1;
+            console.log($slide.length)
+            // console.log($slide.index())
+            var timer=setInterval(()=>{
+                $sliders.animate({'margin-left':'-='+width},animateSpeed,function(){
+                    currentIndex++
+                    if(currentIndex===$slide.length){
+                        // clearInterval(timer)
+                        currentIndex=1;
+                        $sliders.css('margin-left',0)
+                    }
+                })
+            },pause)
+        })
+    </script>
 </body>
 
 </html>
