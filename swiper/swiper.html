@@ -25,7 +25,7 @@
                 jQuery Swiper
             </h1>
         </div>
-        <ul class="slider">
+        <div class="slider">
             <ul class="sliders">
                 <li class="slide"><img src="img/2.jpg" alt=""></li>
                 <li class="slide"><img src="img/3.jpg" alt=""></li>
@@ -40,26 +40,39 @@
         </div>
     </div>
     <script>
-        $(function(){
-            var width=720;
-            var animateSpeed=1000;
-            var pause=3000;
-            var $slider=$('.slider')
-            var $sliders=$slider.find('.sliders')
-            var $slide=$sliders.find('.slide')
-            var currentIndex=1;
-            console.log($slide.length)
+        $(function () {
+            var width = 720;
+            var animateSpeed = 1000;
+            var pause = 3000;
+            var $slider = $('.slider')
+            var $sliders = $slider.find('.sliders')
+            var $slide = $sliders.find('.slide')
+            var currentIndex = 1;
+            var timer;
+            // console.log($slide.length)
             // console.log($slide.index())
-            var timer=setInterval(()=>{
-                $sliders.animate({'margin-left':'-='+width},animateSpeed,function(){
-                    currentIndex++
-                    if(currentIndex===$slide.length){
-                        // clearInterval(timer)
-                        currentIndex=1;
-                        $sliders.css('margin-left',0)
-                    }
-                })
-            },pause)
+            function startSlider() {
+                timer = setInterval(() => {
+                    $sliders.animate({
+                        'margin-left': '-=' + width
+                    }, animateSpeed, function () {
+                        currentIndex++
+                        if (currentIndex === $slide.length) {
+                            // clearInterval(timer)
+                            currentIndex = 1;
+                            $sliders.css('margin-left', 0)
+                        }
+                    })
+                }, pause)
+            }
+            // 添加鼠标移入移出事件
+            $slider.on('mouseenter', pauseSlider).on('mouseleave', startSlider)
+
+            function pauseSlider() {
+                clearInterval(timer)
+                timer = null;
+            }
+            startSlider();
         })
     </script>
 </body>

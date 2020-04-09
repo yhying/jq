@@ -6,6 +6,7 @@
     width: 720px;
     height: 450px;
     overflow: hidden;
+    cursor: pointer;
 }
 .sliders {
     width: 10000px;
