@@ -23,6 +23,10 @@
             margin-bottom: 10px;
             padding: 10px;
         }
+        .remove {
+            float: right;
+            background-color: #cccccc;
+        }
     </style>
 </head>
 
@@ -33,42 +37,82 @@
     <H4>添加新的点餐列表</H4>
     <p>name:<input type="text" id="name"></p>
     <p>drink:<input type="text" id="drink"></p>
+    <!-- 模板引擎 -->
+    <template id="order-template">
+        <li>
+            <p><strong>Name:</strong>{{name}}</p>
+            <p><strong>drink:</strong>{{drink}}</p>
+            <button data-id='{{id}}' class="remove">X</button>
+        </li>
+    </template>
     <button id="add-order">Add!</button>
     <script src="js/jquery.min.js"></script>
+    <!-- 引入模板引擎 -->
+    <script src="js/mustache.min.js"></script>
     <script>
         $(function () {
             var $orders = $('.orders')
+            // var orderTemplate=$('#oreder-template').html();
+            // ES6模板字符串方法
+            function crateOrder(order){
+                var orderTemplate = `<li>Name:${order.name}Drink:${order.drink}<button data-id='${order.id}' class="remove">x</button></li>`
+                return orderTemplate;
+            }
             $.ajax({
                 type: 'GET',
                 url: 'http://rest.learncode.academy/api/learncode/friends',
                 success: function (res) {
                     console.log(res)
-                    $.each(res,function(i,order){
+                    $.each(res, function (i, order) {
                         addOrder(order)
                     })
                 }
             })
-            $('#add-order').on('click',function(){
-                var order={
-                name:$('#name').val(),
-                drink:$('#drink').val(),
-            }
-            console.log(order)
-            $.ajax({
-                type:'POST',
-                url:'http://rest.learncode.academy/api/learncode/friends',
-                data:order,
-                success:function(newOrder){
-                    addOrder(newOrder)
-                },error:function(){
-                    alert('err...')
+            // 点击添加，
+            $('#add-order').on('click', function () {
+                var order = {
+                    name: $('#name').val(),
+                    drink: $('#drink').val(),
                 }
-            })
+                console.log(order)
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://rest.learncode.academy/api/learncode/friends',
+                    data: order,
+                    success: function (newOrder) {
+                        addOrder(newOrder)
+                        console.log(newOrder)
+                    },
+                    error: function () {
+                        alert('err...')
+                    }
+                })
             })
             // 动态生成li
-            function addOrder(order){
-                $orders.append('<li>Name:'+order.name+'Drink:'+order.drink+'</li>')
+            function addOrder(order) {
+                // 渲染模板引擎
+                // $orders.append(Mustache.render(orderTemplate,order));
+                var tpl =crateOrder(order)
+                $orders.append(tpl)
             }
+            // 点击删除item
+            $('.orders').delegate('.remove','click',function(){
+                // 获取要删除的li,id
+                var buttonId=$(this).attr('data-id')
+                // 获取删除的li
+                var $li=$(this).parent()
+                // 查找离得最近的
+                // var $li=$(this).closest('li')  
+                $.ajax({
+                    type:"GET",
+                    url: 'http://rest.learncode.academy/api/learncode/friends'+'/'+buttonId,
+                    success:function(){
+                        $li.fadeOut(300,function(){
+                            $(this).remove()
+                        })
+                    }
+                })
+            })
         })
     </script>
 </body>
