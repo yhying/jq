@@ -1,28 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>原生js滑块拖动验证</title>
     <style>
-    .box {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #e9e7e9;
-        width: 200px;
-        height: 40px;
-        margin: 100px auto;
-        color: #000000;
-        font-weight: 700;
-    }
+        .box {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #e9e7e9;
+            /* box-sizing: border-box; */
+            background-color: #e9e7e9;
+            width: 200px;
+            height: 40px;
+            margin: 100px auto;
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .box .btn {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: 100%;
+            background-color: #fff !important;
+            background: url('img/move.png') no-repeat;
+            background-size: 25px 25px;
+            background-position: center;
+            z-index:3;
+            cursor: pointer;
+        }
+
+        .box .text {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            z-index:2;
+        }
+
+        .bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: #7ac23c;
+            z-index: 1;
+        }
     </style>
 </head>
+
 <body>
     <div class="box">
-        请向右滑动滑块
+        <div class="btn"></div>
+        <span class="text">请向右滑动滑块</span>
+        <div class="bg"></div>
     </div>
     <script src="js/demo.js"></script>
 </body>
+
 </html>
