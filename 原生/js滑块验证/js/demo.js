@@ -8,6 +8,7 @@ window.onload = function () {
     // console.log(box.offsetWidth)
     // console.log(btn.offsetWidth)
     btn.onmousedown = function (e) {
+        // 按下后与x轴的距离
         var downMoveX = e.clientX
         // console.log(downMoveX)
         btn.onmousemove = function (e2) {
@@ -21,9 +22,8 @@ window.onload = function () {
                     flag=true;
                     text.innerHTML = '验证成功'
                     text.style.color = '#fff'
-                    // 取消滑动事件
+                    // 事件清除
                     this.onmousemove = null;
-                    // 取消按下事件
                     this.onmousedown = null;
                     setInterval(() => {
                         box.style.display = 'none'
