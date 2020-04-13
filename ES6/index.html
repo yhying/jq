@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // es6 var 和let，const区别
+        var a = 'hello';
+        let b = 'hi'
+        // 1，不存在变量提升(let，const)
+        // 2,同一个作用域不能重复定义同一个名称
+        let t = 1;
+        // let t=10; 报错
+        // 3,不同的作用域，var属于函数作用域，let,const块级作用域
+        function fun() {
+            let n = 10;
+            if (true) {
+                let n = 100;
+            }
+            console.log(n) /* 10 不同作用域互不影响*/
+        }
+        // 4,const 声明一个只读常量，声明后，不能改变，必须初始化
+        const a = 1;
+        a = 100 /* 报错 */
+        const b; /* 报错，必须初始化赋值*/
+
+        // 箭头函数，简化了函数定义
+        var f = function (n1, n2) {
+            return n1 + n2;
+        }
+        let f = (n1, n2) => n1 + n2;
+
+        // 数据结构 set map
+        // set 类似于数组，成员是唯一的
+        // map 类似于对象
+        const s = new Set() /* add添加方法 */
+        s.add(1).add(1)
+        console.log(s)
+        // 数组去重
+        var a2 = [1, 2, 3, 2, 4, 5, 5, 3, 7]
+        var a3 = [...new Set(a2)] /* 扩展运算符，序列化处理，再转为数组 */
+        console.log(a3)
+        //    map
+        const m = new map()
+        m.set('age',18) /* 键值对形式 */
+        // forof遍历  ES6
+        for(let [key,value] of m){
+            
+        }
+    </script>
+</body>
+
+</html>
