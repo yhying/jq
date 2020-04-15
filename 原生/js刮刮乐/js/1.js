@@ -1,4 +1,5 @@
 window.onload = function () {
+    console.log(window.location)
     // 获取画布元素
     var canvas = document.getElementById('canvas')
     var ctx = canvas.getContext('2d')
@@ -23,6 +24,14 @@ window.onload = function () {
             ctx.clearRect(e.clientX, e.clientY, 20, 20)
         }
     }
+    canvas.addEventListener('touchstart',function(e){
+        // console.log(e.touches[0])
+        ctx.clearRect(e.touches[0].clientX, e.touches[0].clientY, 20, 20)
+    })
+    canvas.addEventListener('touchmove',function(e){
+        // console.log(e)
+        ctx.clearRect(e.touches[0].clientX, e.touches[0].clientY, 20, 20)
+    })
     // 松开事件
     canvas.onmouseup = function (e) {
         canvas.onmousemove = null; /* 清除滑动事件 */
