@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,45 @@
     <title>刮刮乐</title>
     <script src="js/1.js"></script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+        .box {
+            position: relative;
+        }
         #canvas {
-            background-color: #ccc;
+            position: relative;
+            z-index: 999;
+        }
+
+        .price {
+            position: absolute;
+            top: 50%;
+            left: 150px;
+            transform: translate(-50%,-50%);
+            font-size: 25px;
+            color: red;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            /* 文字不被选中 */
+            z-index: 1;
         }
     </style>
 </head>
+
 <body>
-    <canvas id="canvas" width="300" height="100"></canvas>
-    <div class="price">谢谢惠顾</div>
+    <div class="box">
+        <canvas id="canvas" width="300" height="100"></canvas>
+        <div class="price">谢谢惠顾</div>
+    </div>
 </body>
+
 </html>
