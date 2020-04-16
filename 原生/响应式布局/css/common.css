@@ -1,0 +1,109 @@
+/* 公共样式 */
+body {
+    color: #777;
+}
+body,html {
+    width: 100%;
+    /* height: 100%; */
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: #777;
+}
+ul {
+    list-style: none;
+}
+img {
+    width: 100%;
+    height: 100%;
+}
+.layout {
+    padding-left: 150px;
+    height: 100%;
+}
+.main {
+    height: 100%;
+}
+.menu {
+    position: fixed;
+    top: 0;
+    left:0;
+    bottom: 0;
+    margin-left: 0;
+    width: 150px;
+    background-color: #333;
+    overflow-y: auto;
+    /* display: none; */
+}
+.menu .menu-heading {
+    display: block;
+    padding: 0.6rem 0 0.6rem 0.6rem;
+    background-color: #404040;
+    color: #fff;
+}
+/* 收缩菜单 */
+.menu-link {
+    position: fixed;
+    display: block;
+    top:0;
+    left: 0;
+    background-color: #404040;
+    width: 1rem;
+    height: auto;
+    padding: 1.3rem;
+}
+.menu-link span {
+    position: relative;
+    display: block;
+}
+/*伪元素 */
+.menu-link span,
+.menu-link span::before,
+.menu-link span::after {
+    background-color: #fff;
+    width: 100%;
+    height: 2px;
+}
+.menu-link span::before,
+.menu-link span::after {
+    position: absolute;
+    margin-top: -0.5rem;
+    content: '';
+}
+.menu-link span::after {
+    margin-top: 0.5rem;
+}
+/* 右侧主体区域 */
+.header {
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+.header h1 {
+    margin: 0.2rem 0;
+    font-size: 3rem;
+    font-weight: 300;
+}
+.header h2 {
+    color: #ccc;
+    font-weight: 300;
+}
+/* 内容 */
+.content {
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+.content>div {
+    font-size: 0;
+    text-align: center;
+}
+.content .img-list{
+    width: 25%;
+    display: inline-block;
+}
+.content .img-responsive {
+    max-width: 100%;
+}
+
