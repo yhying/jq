@@ -53,6 +53,7 @@ img {
     width: 1rem;
     height: auto;
     padding: 1.3rem;
+    transition: all .4s ease;
 }
 .menu-link span {
     position: relative;
