@@ -5,7 +5,14 @@ var data = [{
             child: [{
                 name: 'java'
             }, {
-                name: 'C#'
+                name: 'C#',
+                child: [{
+                    name: 'unit1'
+                }, {
+                    name: 'unit2',
+                    
+                }]
+
             }]
         },
         {
@@ -51,18 +58,20 @@ $(function () {
     // 拼接,已知层级，3层
     // var str = '<ul>'
     // data.forEach(item => {
-    //     str += `<li>${item.name}</li>`
+    //     str += `<li>${item.name}`
     //     if (item.child) {
     //         console.log(item.child)
     //         str += '<ul>'
+    //         str+='</li>'
     //         item.child.forEach(item2 => {
-    //             str += `<li>${item2.name}</li>`
+    //             str += `<li>${item2.name}`
     //             if(item2.child){
     //                 str+='<ul>'
     //                 item2.child.forEach(item3=>{
-    //                     str+=`<li>${item3.name}</li>`
+    //                     str+=`<li>${item3.name}`
     //                 })
     //                 str+='</ul>' 
+    //                 str+='</li>'
     //             }
     //         })
     //         str += '</ul>'
@@ -75,14 +84,30 @@ $(function () {
     function createTree(data) {
         var str = '<ul>'
         data.forEach(item => {
-            str += `<li>${item.name}</li>`
+            str += `<li><span>-</span>${item.name}`
             if (item.child) {
-                str+=createTree(item.child)
+                str += createTree(item.child)
             }
+            str += '</li>'
         })
         str += '</ul>'
         return str;
     }
     // 传入data数据
     $('.lists').html(createTree(data))
+
+    // 点击收缩事件
+    $('.lists ul li span').on('click', function () {
+        event.stopPropagation() /* 阻止事件冒泡 */
+        // console.log($(this).parent())
+        if ($(this).parent().find('ul').is(':visible')) {
+            // 隐藏
+            $(this).parent().find('ul').hide()
+            $(this).parent().find('span').text('+')
+        } else {
+            // 显示
+            $(this).parent().find('ul').show()
+            $(this).parent().find('span').text('-')
+        }
+    })
 })
