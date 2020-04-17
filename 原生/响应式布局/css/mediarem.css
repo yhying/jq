@@ -1,0 +1,43 @@
+/* 终端适应处理 */
+/* >=768 */
+@media(min-width:768px) {
+
+}
+/* css3动画 */
+.menu,
+.layout{
+    transition: all .4s ease;
+}
+/* <=768 */
+@media(max-width:768px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+    .header h2 {
+        font-size: 1rem;
+    }
+    .content .img-list{
+        width: 50%;
+        display: inline-block;
+    }
+    /* 收缩左侧 */
+    .menu {
+        left: -150px;
+    }
+    .layout {
+        padding-left:0px;
+    }
+}
+/* <=568 */
+@media(max-width:568px) {
+    .header h1 {
+        font-size: 1.6rem;
+    }
+    .header h2 {
+        font-size: 0.8rem;
+    }
+    .content .img-list{
+        width: 100%;
+        display: inline-block;
+    }
+}
