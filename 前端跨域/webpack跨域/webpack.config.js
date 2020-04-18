@@ -10,6 +10,14 @@ module.exports = {
         /* 调用path对象的resolve方法 */
         publicPath: '/' /* 资源路径 */
     },
+    devServer:{
+        // proxy:{ /* 代理 */
+        //     '/api':{
+        //         target:'http://localhost:3001',
+        //         // pathRewrite:{'/api':''}
+        //     }
+        // }
+    },
     plugins:[
         new htmlWebpackPlugin({
             filename:'index.html',
