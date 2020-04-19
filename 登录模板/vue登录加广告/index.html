@@ -26,16 +26,16 @@
             <div class="login-content">
                 <div class="panel">
                     <div class="icon"><i class="iconfont">&#xe600;</i></div>
-                    <input type="text" class="mobile btn" name="mobile" placeholder="手机号">
-                    <span class="error-tip"></span>
+                    <input type="text" class="mobile btn" v-model="mobile" placeholder="手机号">
+                    <span class="error-tip" v-show="!mobile">手机号不能为空</span>
                 </div>
                 <div class="panel">
                     <div class="icon"><i class="iconfont">&#xe615;</i></div>
-                    <input type="password" class="password btn" name="password" placeholder="密码">
-                    <span class="error-tip"></span>
+                    <input type="password" class="password btn" v-model="password" placeholder="密码">
+                    <span class="error-tip" v-show="!password">密码不能为空</span>
                 </div>
                 <div class="panel">
-                    <button type="button" class="btn-login btn login">立即登录</button>
+                    <button type="button" class="btn-login btn login" :disabled="!mobile || !password" @click="login">立即登录</button>
                 </div>
                 <div class="lastPanel ">
                     <a class="text">我要注册</a>
