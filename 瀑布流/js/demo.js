@@ -1,7 +1,9 @@
-$(function () {
+// $(function () {   /* 等到dom加载完成执行 */
+//     waterFull();
+// })
+$(window).on('load',function(){  /* 等到图片，dom都加载完成执行 */
     waterFull();
 })
-
 function waterFull() {
     // 求出列数
     let box = $('.box')
