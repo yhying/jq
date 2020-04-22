@@ -1,0 +1,51 @@
+<script>
+    window.onload = function () {
+        // 真实对象  闭包
+        var myImage = (function () {
+            var imgNode = document.createElement('img');
+            document.body.appendChild(imgNode);
+            return {
+                setSrc: function (src) {
+                    imgNode.src = src;
+                }
+            }
+        })()
+        // 代理对象
+        var ProxyImage = (function () {
+            var img = new Image();
+            img.onload = function () {
+                myImage.setSrc(this.src)
+            }
+            return {
+                setSrc: function (src) {
+                    myImage.setSrc("img/c89580d9aec2470abc3f462ac0fac27a!400x400.jpeg"),
+                        img.src = src;
+                }
+            }
+        })()
+        // 调用
+        console.log(ProxyImage)
+        ProxyImage.setSrc('img/f0a7ccde461e4f6f84e59f58bcbf6bad!400x400.jpeg') /* 真实图片地址 */
+        // // 解决图片懒加载
+        // var myImage = (function () {
+        //     var imgNode = document.createElement('img') /* 创建图片节点 */
+        //     document.body.appendChild(imgNode) /* 把图片加入body */
+        //     var img = new Image() /* 代理对象，先展示等待图片，接着负责拉取真实图片 */
+        //     img.onload = function () {
+        //         /*用真实图片加载完毕后触发  */
+        //         setTimeout(() => {
+        //             imgNode.src = this.src; /* 用真实图片把展示的等待图片替换 */
+        //         }, 2000)
+        //     }
+        //     return {
+        //         /* 返回一个对象，myImage */
+        //         // 先展示等待的图片，
+        //         setSrc: function (src) {
+        //             imgNode.src = "img/c89580d9aec2470abc3f462ac0fac27a!400x400.jpeg",
+        //                 img.src = src;
+        //         }
+        //     }
+        // })()
+        // myImage.setSrc('img/f0a7ccde461e4f6f84e59f58bcbf6bad!400x400.jpeg') /* 真实图片地址 */
+    }
+</script>
