@@ -14,7 +14,9 @@
         var ProxyImage = (function () {
             var img = new Image();
             img.onload = function () {
-                myImage.setSrc(this.src)
+                setInterval(()=>{
+                    myImage.setSrc(this.src)
+                },2000)
             }
             return {
                 setSrc: function (src) {
