@@ -24,8 +24,8 @@ img {
 .main p {
     padding-left: 20px;
     color: #1bb1d6;
-    height: 30px;
-    line-height: 30px;
+    height: 25px;
+    line-height: 25px;
 }
 .main p:first-child{
     border-bottom: 1px solid #ccc;
