@@ -3,14 +3,14 @@
     padding: 0;
 }
 /* 去除滚动条 */
-::-webkit-scrollbar{
+/* ::-webkit-scrollbar{
     display: none;
-}
+} */
 html,body {
-    width: 100%;
+    /* width: 100%;
     height: 100%;
     overflow: hidden;
-    overflow-y: auto;
+    overflow-y: auto; */
     font-size: 14px;
     color: #fff;
 }
@@ -45,7 +45,6 @@ img {
     margin-top: 10px;
     padding-bottom: 40px;
     width:48%;
-    height: 100%;
 }
 .lists label {
     position: absolute;
